@@ -30,7 +30,7 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <Navbar toggleTheme={toggleTheme} />
         <Container className={classes.container} maxWidth="lg">
-          <Paper elevation="4">
+          <Paper elevation={4}>
             <AppRouter />
           </Paper>
         </Container>
