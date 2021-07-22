@@ -1,3 +1,5 @@
+[![Heroku Deploy](https://github.com/moncks/devinhouse-projeto-6/actions/workflows/heroku-deploy.yml/badge.svg)](https://github.com/moncks/devinhouse-projeto-6/actions/workflows/heroku-deploy.yml)
+
 # DEVinHouse Projeto 06
 
 Repositório para realização do projeto 6 do DEVinHouse
