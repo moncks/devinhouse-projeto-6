@@ -1,4 +1,15 @@
+import { CardContainer, CardProcessos, SearchBar } from "../components"
+
+
 const ListagemProcesso = () => {
-  return <>Listagem de processo</>
+  
+  return (
+    <>
+      <CardContainer>
+        <SearchBar/>
+        <CardProcessos/>
+      </CardContainer>
+    </>
+  )
 }
 export default ListagemProcesso
