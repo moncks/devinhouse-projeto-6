@@ -40,16 +40,18 @@ const ListagemProceso = () => {
 
   const [processos, setProcessos] = useState(null)
   const getProcessos = async () => {
-    if (!processos) {
-      const response = await ProcessoService.findAll()
-      setProcessos(response?.data ?? [])
-    }
+    const response = await ProcessoService.findAll(assunto)
+    setProcessos(response?.data ?? [])
   }
 
   useEffect(() => {
     getAssuntos()
     getProcessos()
-  })
+  }, [])
+
+  const handleClickBuscar = () => {
+    getProcessos()
+  }
 
   return (
     <>
@@ -78,8 +80,9 @@ const ListagemProceso = () => {
 
             {/* COLOQUEI ESSE FORMCONTROL PRA CORRIGIR O DESALINHAMENTO */}
             <FormControl variant="outlined" className={classes.formControl}>
-              <TextField id="outlined-basic" label="Número do processo" variant="outlined" />
+              <TextField label="Número do processo" variant="outlined" />
             </FormControl>
+            <Button onClick={handleClickBuscar}>Buscar</Button>
           </Collapse>
         </Grid>
         <Grid item xs={6}>

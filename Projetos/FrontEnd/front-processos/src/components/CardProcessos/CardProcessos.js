@@ -13,7 +13,7 @@ export const CardProcessos = ({ processo }) => {
   return (
     <Card className={classes.root}>
       <CardContent>
-        <Grid container justifyContent="space-between">
+        <Grid container justifyContent="space-between" className={classes.primeiraColuna}>
           <Grid item xs={4}>
             <Typography className={classes.title}>
               <strong>Nº Processo:</strong>
