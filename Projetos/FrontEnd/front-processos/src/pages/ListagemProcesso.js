@@ -13,6 +13,7 @@ import {
 import { useStyles } from './ListagemProcesso.styles'
 import ModalProcesso from './ModalProcesso'
 import * as AssuntoService from '../utils/services/AssuntoService'
+import { CardContainer, CardProcessos } from '../components'
 
 const ListagemProceso = () => {
   const classes = useStyles()
@@ -76,6 +77,10 @@ const ListagemProceso = () => {
           <ModalProcesso open={isModalVisible} onClose={() => setIsModalVisible(false)}></ModalProcesso>
         </Grid>
       </Grid>
+
+      <CardContainer>
+        <CardProcessos />
+      </CardContainer>
     </>
   )
 }
