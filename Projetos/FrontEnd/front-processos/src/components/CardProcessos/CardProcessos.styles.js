@@ -1,16 +1,13 @@
-import { makeStyles } from "@material-ui/core";
-
+import { makeStyles } from '@material-ui/core'
 
 export const useStyles = makeStyles({
   root: {
-    minWidth: 275,
-    maxWidth: '80%',
-    margin: '20px auto'
+    margin: '20px auto',
   },
   bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)",
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)',
   },
   title: {
     fontSize: 14,
@@ -20,6 +17,6 @@ export const useStyles = makeStyles({
   },
   button: {
     backgroundColor: '#fff',
-    color: '#5c5cff'
-  }
-});
+    color: '#5c5cff',
+  },
+})

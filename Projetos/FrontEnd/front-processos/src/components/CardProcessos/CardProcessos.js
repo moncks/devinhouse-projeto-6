@@ -10,54 +10,52 @@ export const CardProcessos = () => {
   const classes = useStyles()
 
   return (
-    <Grid item xs={12} sm={12} md={24} lg={18} xl={12}>
+    <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
       <Card className={classes.root}>
         <CardContent>
           <Grid container justifyContent="space-between">
-            <Typography variant="h5" component="h2" className={classes.title} color="textSecondary" gutterBottom>
-              Nº Processo:
-            </Typography>
-            <Typography variant="h5" component="h2" className={classes.title} color="textSecondary" gutterBottom>
-              Ano
-            </Typography>
-          </Grid>
-          <Grid container justifyContent="space-between">
-            <Typography variant="h5" component="h2">
-              123
-            </Typography>
-            <Typography variant="h5" component="h2">
-              12
-            </Typography>
-          </Grid>
-          <Grid container justifyContent="space-between">
-            <Grid>
-              <Grid container>
-                <Typography className={classes.title}>
-                  <strong>Orgao/Setor:</strong>
-                </Typography>
-              </Grid>
+            <Grid item xs={4}>
+              <Typography variant="h5" component="h2" className={classes.title} color="textSecondary" gutterBottom>
+                Nº Processo:
+              </Typography>
+              <Typography variant="h5" component="h2">
+                123
+              </Typography>
+            </Grid>
+            <Grid item xs={4}>
+              <Typography className={classes.title}>
+                <strong>Orgao/Setor:</strong>
+              </Typography>
               <Typography>SOFT/TESTES</Typography>
-              <Grid container>
-                <Typography className={classes.title}>
-                  <strong>Interessado:</strong>
-                </Typography>
-              </Grid>
+            </Grid>
+            <Grid item xs={4}>
+              <Typography variant="h5" component="h2" className={classes.title} color="textSecondary" gutterBottom>
+                Ano
+              </Typography>
+              <Typography variant="h5" component="h2">
+                12
+              </Typography>
+            </Grid>
+          </Grid>
+          <Grid container justifyContent="space-between">
+            <Grid item xs={4}>
+              <Typography className={classes.title}>
+                <strong>Interessado:</strong>
+              </Typography>
               <Typography>Joaozinho</Typography>
             </Grid>
-            <Grid>
-              <Grid container>
-                <Typography className={classes.title}>
-                  <strong>Assunto:</strong>
-                </Typography>
-              </Grid>
+            <Grid item xs={4}>
+              <Typography className={classes.title}>
+                <strong>Assunto:</strong>
+              </Typography>
               <Typography>Morreu</Typography>
-              <Grid container>
-                <Typography className={classes.title}>
-                  <strong>Descrição:</strong>
-                  Mussum Ipsum, cacilds vidis litro abertis. Casamentiss faiz malandris se pirulitá. Interessantiss
-                  quisso pudia ce receita de bolis, mais bolis eu num gostis.
-                </Typography>
-              </Grid>
+            </Grid>
+            <Grid item xs={4}>
+              <Typography className={classes.title}>
+                <strong>Descrição:</strong>
+                Mussum Ipsum, cacilds vidis litro abertis. Casamentiss faiz malandris se pirulitá. Interessantiss quisso
+                pudia ce receita de bolis, mais bolis eu num gostis.
+              </Typography>
             </Grid>
           </Grid>
         </CardContent>
