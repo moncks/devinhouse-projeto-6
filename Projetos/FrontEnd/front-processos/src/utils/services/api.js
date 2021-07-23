@@ -2,6 +2,7 @@ import axios from "axios";
 import keycloak from '../../keycloak';
 
 const kcToken = keycloak?.token ?? '';
+const initialized = keycloak?.authenticated ?? '';
 
 const axiosInstance = axios.create({
     baseURL: process.env.REACT_APP,
