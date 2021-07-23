@@ -26,13 +26,15 @@ const ListagemProceso = () => {
 
   const [assunto, setAssunto] = useState('')
   const handleChangeAssunto = (event) => {
-    console.log(event)
     setAssunto(event.target.value)
   }
 
   const [assuntos, setAssuntos] = useState(null)
   const getAssuntos = async () => {
-    if (!assuntos) setAssuntos((await AssuntoService.findAll()) ?? [])
+    if (!assuntos) {
+      const response = await AssuntoService.findAll()
+      setAssuntos(response?.data ?? [])
+    }
   }
 
   useEffect(() => {

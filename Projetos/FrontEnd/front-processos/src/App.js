@@ -17,13 +17,9 @@ const App = () => {
 
   const theme = getTheme(darkMode)
 
-  const eventLogger = (event, error) => {
-    console.log('onKeycloakEvent', event, error)
-  }
+  const eventLogger = (event, error) => {}
 
-  const tokenLogger = (tokens) => {
-    console.log('onKeycloakTokens', tokens)
-  }
+  const tokenLogger = (tokens) => {}
 
   return (
     <ReactKeycloakProvider authClient={keycloak} onEvent={eventLogger} onTokens={tokenLogger}>

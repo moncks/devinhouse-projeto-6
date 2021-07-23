@@ -1,18 +1,18 @@
 import axios from 'axios'
 import keycloak from '../../keycloak'
 
-const kcToken = keycloak?.token ?? ''
-
-const axiosInstance = axios.create({
-  baseURL: 'http://localhost:8282/v1/', //process.env.REACT_APP,
-  headers: {
-    Authorization: keycloak?.authenticated ? `Bearer ${kcToken}` : undefined,
-  },
-})
+const createAxiosInstance = () => {
+  return axios.create({
+    baseURL: 'http://localhost:8282/v1/', //process.env.REACT_APP,
+    headers: {
+      Authorization: keycloak?.authenticated ? `Bearer ${keycloak?.token}` : undefined,
+    },
+  })
+}
 
 export const get = async (url) => {
   try {
-    return await axiosInstance.get(url)
+    return await createAxiosInstance().get(url)
   } catch (error) {
     console.error(error)
   }
@@ -20,7 +20,7 @@ export const get = async (url) => {
 
 export const post = async (url, data = {}, headers = {}) => {
   try {
-    return await axiosInstance.post(url, data, headers)
+    return await createAxiosInstance().post(url, data, headers)
   } catch (error) {
     console.error(error)
   }
@@ -28,7 +28,7 @@ export const post = async (url, data = {}, headers = {}) => {
 
 export const put = async (url, data = {}, headers = {}) => {
   try {
-    return await axiosInstance.put(url, data, headers)
+    return await createAxiosInstance().put(url, data, headers)
   } catch (error) {
     console.error(error)
   }
@@ -36,7 +36,7 @@ export const put = async (url, data = {}, headers = {}) => {
 
 export const remove = async (url) => {
   try {
-    return await axiosInstance.delete(url)
+    return await createAxiosInstance().delete(url)
   } catch (error) {
     console.error(error)
   }
