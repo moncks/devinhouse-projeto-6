@@ -27,7 +27,16 @@ const ListagemProceso = () => {
 
   const [assunto, setAssunto] = useState('')
   const handleChangeAssunto = (event) => {
-    setAssunto(event.target.value)
+    var value = event.target.value
+    if (value) setNumeroDoProcesso('') // limpa o numero do processo, quando tem assunto
+    setAssunto(value)
+  }
+
+  const [numeroDoProcesso, setNumeroDoProcesso] = useState('')
+  const handleChangeNumeroDoProcesso = (event) => {
+    var value = event.target.value
+    if (value) setAssunto('') // limpa o assunto, quando tem numero do processo
+    setNumeroDoProcesso(value)
   }
 
   const [assuntos, setAssuntos] = useState(null)
@@ -40,8 +49,18 @@ const ListagemProceso = () => {
 
   const [processos, setProcessos] = useState(null)
   const getProcessos = async () => {
-    const response = await ProcessoService.findAll(assunto)
-    setProcessos(response?.data ?? [])
+    if (!numeroDoProcesso) {
+      setProcessos((await ProcessoService.findAll(assunto))?.data ?? [])
+      return
+    }
+
+    const processoEncontrado = (await ProcessoService.find(numeroDoProcesso))?.data
+    if (processoEncontrado) {
+      setProcessos([processoEncontrado])
+      return
+    }
+
+    setProcessos([])
   }
 
   useEffect(() => {
@@ -80,7 +99,12 @@ const ListagemProceso = () => {
 
             {/* COLOQUEI ESSE FORMCONTROL PRA CORRIGIR O DESALINHAMENTO */}
             <FormControl variant="outlined" className={classes.formControl}>
-              <TextField label="Número do processo" variant="outlined" />
+              <TextField
+                label="Número do processo"
+                variant="outlined"
+                value={numeroDoProcesso}
+                onChange={handleChangeNumeroDoProcesso}
+              />
             </FormControl>
             <Button onClick={handleClickBuscar}>Buscar</Button>
           </Collapse>
@@ -94,9 +118,11 @@ const ListagemProceso = () => {
       </Grid>
 
       <CardContainer>
-        {processos?.map((x) => (
-          <CardProcessos processo={x} />
-        ))}
+        {processos?.length > 0 ? (
+          processos?.map((x) => <CardProcessos processo={x} />)
+        ) : (
+          <Typography>Nenhum processo encontrado.</Typography>
+        )}
       </CardContainer>
     </>
   )

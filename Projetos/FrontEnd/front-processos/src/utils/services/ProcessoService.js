@@ -7,7 +7,7 @@ export const findAll = async (assuntoId) => {
 }
 
 export const find = async (id) => {
-  return await Api.get(`/processos${id}`)
+  return await Api.get(`/processos/${id}`)
 }
 
 export const create = async (data) => {
