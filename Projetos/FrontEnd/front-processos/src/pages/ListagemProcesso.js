@@ -13,6 +13,7 @@ import {
 import { useStyles } from './ListagemProcesso.styles'
 import ModalProcesso from './ModalProcesso'
 import * as AssuntoService from '../utils/services/AssuntoService'
+import * as ProcessoService from '../utils/services/ProcessoService'
 import { CardContainer, CardProcessos } from '../components'
 
 const ListagemProceso = () => {
@@ -37,15 +38,24 @@ const ListagemProceso = () => {
     }
   }
 
+  const [processos, setProcessos] = useState(null)
+  const getProcessos = async () => {
+    if (!processos) {
+      const response = await ProcessoService.findAll()
+      setProcessos(response?.data ?? [])
+    }
+  }
+
   useEffect(() => {
     getAssuntos()
+    getProcessos()
   })
 
   return (
     <>
       <Grid container spacing={3}>
         <Grid item xs={6}>
-          <Typography variant="h6" display="inline">
+          <Typography variant="h6" className={classes.subTitulo} display="inline">
             Processos
           </Typography>
           <Button className={classes.btnFiltrar} onClick={handleCollapse}>
@@ -68,7 +78,7 @@ const ListagemProceso = () => {
 
             {/* COLOQUEI ESSE FORMCONTROL PRA CORRIGIR O DESALINHAMENTO */}
             <FormControl variant="outlined" className={classes.formControl}>
-              <TextField id="outlined-basic" label="Chave do processo" variant="outlined" />
+              <TextField id="outlined-basic" label="Número do processo" variant="outlined" />
             </FormControl>
           </Collapse>
         </Grid>
@@ -81,7 +91,9 @@ const ListagemProceso = () => {
       </Grid>
 
       <CardContainer>
-        <CardProcessos />
+        {processos?.map((x) => (
+          <CardProcessos processo={x} />
+        ))}
       </CardContainer>
     </>
   )

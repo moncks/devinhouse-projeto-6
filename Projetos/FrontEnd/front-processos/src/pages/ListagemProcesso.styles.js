@@ -11,4 +11,12 @@ export const useStyles = makeStyles((theme) => ({
   selectEmpty: {
     marginTop: theme.spacing(1),
   },
+  subTitulo: {
+    marginLeft: '5%',
+    fontSize: 35,
+  },
+  btnFiltrar: {
+    fontSize: '10px',
+    marginLeft: '8%',
+  },
 }))
