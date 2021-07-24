@@ -79,7 +79,7 @@ const ListagemProceso = () => {
           <Typography variant="h6" className={classes.subTitulo} display="inline">
             Processos
           </Typography>
-          <Button className={classes.btnFiltrar} onClick={handleCollapse}>
+          <Button className={classes.btnFiltrar} color="primary" onClick={handleCollapse}>
             Filtrar
           </Button>
           <Collapse in={collapse}>
@@ -119,7 +119,7 @@ const ListagemProceso = () => {
 
       <CardContainer>
         {processos?.length > 0 ? (
-          processos?.map((x) => <CardProcessos processo={x} />)
+          processos?.map((x) => <CardProcessos key={x.id} processo={x} />)
         ) : (
           <Typography>Nenhum processo encontrado.</Typography>
         )}
