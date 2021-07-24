@@ -15,7 +15,7 @@ export const create = async (data) => {
 }
 
 export const update = async (data, id) => {
-  return await Api.put(`$/processos/${id}`, data)
+  return await Api.put(`/processos/${id}`, data)
 }
 
 export const remove = async (id) => {

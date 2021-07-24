@@ -1,15 +1,22 @@
-import React from 'react'
+import { useState } from 'react'
 
 import { Card, CardActions, CardContent, Typography, Grid, IconButton } from '@material-ui/core'
 import DeleteIcon from '@material-ui/icons/Delete'
 import EditIcon from '@material-ui/icons/Edit'
+import ModalProcesso from '../../pages/ModalProcesso'
 
 import { useStyles } from './CardProcessos.styles'
 
-export const CardProcessos = ({ processo }) => {
+export const CardProcessos = ({ processo, onAtualizarProcessos }) => {
   const classes = useStyles()
 
-  console.log(processo)
+  const [isModalVisible, setIsModalVisible] = useState(false)
+
+  const fecharModalCadastro = (atualizarListagem) => {
+    if (atualizarListagem) onAtualizarProcessos()
+    setIsModalVisible(false)
+  }
+
   return (
     <Card className={classes.root} elevation={2}>
       <CardContent>
@@ -59,12 +66,20 @@ export const CardProcessos = ({ processo }) => {
       </CardContent>
       <CardActions>
         <Grid container justifyContent="flex-end">
-          <IconButton className={classes.button} variant="contained">
+          <IconButton
+            className={classes.button}
+            variant="contained"
+            onClick={() => {
+              setIsModalVisible(true)
+            }}
+          >
             <EditIcon />
           </IconButton>
           <IconButton className={classes.button} variant="contained">
             <DeleteIcon />
           </IconButton>
+
+          <ModalProcesso open={isModalVisible} onClose={fecharModalCadastro} processo={processo}></ModalProcesso>
         </Grid>
       </CardActions>
     </Card>

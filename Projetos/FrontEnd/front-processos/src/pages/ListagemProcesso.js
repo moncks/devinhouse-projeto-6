@@ -9,13 +9,13 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  Container,
+  Box,
 } from '@material-ui/core'
 import { useStyles } from './ListagemProcesso.styles'
 import ModalProcesso from './ModalProcesso'
 import * as AssuntoService from '../utils/services/AssuntoService'
 import * as ProcessoService from '../utils/services/ProcessoService'
-import { CardContainer, CardProcessos } from '../components'
+import { CardProcessos } from '../components'
 
 const ListagemProceso = () => {
   const classes = useStyles()
@@ -73,6 +73,11 @@ const ListagemProceso = () => {
     getProcessos()
   }
 
+  const fecharModalCadastro = (atualizarListagem) => {
+    if (atualizarListagem) getProcessos()
+    setIsModalVisible(false)
+  }
+
   return (
     <>
       <Grid container spacing={3}>
@@ -111,15 +116,17 @@ const ListagemProceso = () => {
           </Collapse>
         </Grid>
         <Grid item xs={6}>
-          <Button variant="contained" className={classes.btnNovo} onClick={() => setIsModalVisible(true)}>
-            NOVO
-          </Button>
-          <ModalProcesso open={isModalVisible} onClose={() => setIsModalVisible(false)}></ModalProcesso>
+          <Box display="flex" justifyContent="flex-end">
+            <Button variant="contained" className={classes.btnNovo} onClick={() => setIsModalVisible(true)}>
+              NOVO
+            </Button>
+          </Box>
+          <ModalProcesso open={isModalVisible} onClose={fecharModalCadastro} processo={null}></ModalProcesso>
         </Grid>
       </Grid>
 
       {processos?.length > 0 ? (
-        processos?.map((x) => <CardProcessos key={x.id} processo={x} />)
+        processos?.map((x) => <CardProcessos key={x.id} processo={x} onAtualizarProcessos={() => getProcessos()} />)
       ) : (
         <Typography>Nenhum processo encontrado.</Typography>
       )}
