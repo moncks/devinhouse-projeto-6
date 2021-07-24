@@ -18,9 +18,7 @@ export const CardProcessos = ({ processo }) => {
             <Typography className={classes.title}>
               <strong>Nº Processo:</strong>
             </Typography>
-            <Typography variant="h5" component="h2">
-              {processo.nuProcesso}
-            </Typography>
+            <Typography>{processo.nuProcesso}</Typography>
           </Grid>
 
           <Grid item xs={4}>
@@ -34,9 +32,7 @@ export const CardProcessos = ({ processo }) => {
             <Typography className={classes.title}>
               <strong>Ano</strong>
             </Typography>
-            <Typography variant="h5" component="h2">
-              {processo.nuAno}
-            </Typography>
+            <Typography>{processo.nuAno}</Typography>
           </Grid>
         </Grid>
         <Grid container justifyContent="space-between">
@@ -56,8 +52,8 @@ export const CardProcessos = ({ processo }) => {
           <Grid item xs={4}>
             <Typography className={classes.title}>
               <strong>Descrição:</strong>
-              {processo.descricao}
             </Typography>
+            <Typography>{processo.descricao}</Typography>
           </Grid>
         </Grid>
       </CardContent>
