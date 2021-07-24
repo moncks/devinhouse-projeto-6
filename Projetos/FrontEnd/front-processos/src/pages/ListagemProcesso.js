@@ -9,6 +9,7 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  Container,
 } from '@material-ui/core'
 import { useStyles } from './ListagemProcesso.styles'
 import ModalProcesso from './ModalProcesso'
@@ -117,13 +118,11 @@ const ListagemProceso = () => {
         </Grid>
       </Grid>
 
-      <CardContainer>
-        {processos?.length > 0 ? (
-          processos?.map((x) => <CardProcessos key={x.id} processo={x} />)
-        ) : (
-          <Typography>Nenhum processo encontrado.</Typography>
-        )}
-      </CardContainer>
+      {processos?.length > 0 ? (
+        processos?.map((x) => <CardProcessos key={x.id} processo={x} />)
+      ) : (
+        <Typography>Nenhum processo encontrado.</Typography>
+      )}
     </>
   )
 }

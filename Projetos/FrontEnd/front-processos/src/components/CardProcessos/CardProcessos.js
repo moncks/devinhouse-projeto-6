@@ -11,7 +11,7 @@ export const CardProcessos = ({ processo }) => {
 
   console.log(processo)
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} elevation={2}>
       <CardContent>
         <Grid container justifyContent="space-between" className={classes.primeiraColuna}>
           <Grid item xs={4}>

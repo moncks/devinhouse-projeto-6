@@ -1,8 +1,9 @@
 import { makeStyles } from '@material-ui/core'
 
-export const useStyles = makeStyles({
+export const useStyles = makeStyles((theme) => ({
   root: {
     margin: '20px auto',
+    backgroundColor: theme.palette.background.default,
   },
   primeiraColuna: {
     marginBottom: 30,
@@ -19,7 +20,7 @@ export const useStyles = makeStyles({
     marginBottom: 12,
   },
   button: {
-    backgroundColor: '#fff',
-    color: '#5c5cff',
+    backgroundColor: theme.palette.background.default,
+    color: theme.palette.action.active,
   },
-})
+}))

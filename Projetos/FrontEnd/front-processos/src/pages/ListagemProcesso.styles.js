@@ -12,11 +12,11 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
   },
   subTitulo: {
-    marginLeft: '5%',
     fontSize: 35,
   },
   btnFiltrar: {
     fontSize: '10px',
-    marginLeft: '8%',
+    marginLeft: '15px',
+    color: theme.palette.action.active,
   },
 }))

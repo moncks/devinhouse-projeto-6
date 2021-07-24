@@ -27,7 +27,9 @@ const App = () => {
         <Navbar toggleTheme={toggleTheme} />
         <Container className={classes.container} maxWidth="lg">
           <Paper elevation={4}>
-            <AppRouter />
+            <Container>
+              <AppRouter />
+            </Container>
           </Paper>
         </Container>
       </ThemeProvider>
