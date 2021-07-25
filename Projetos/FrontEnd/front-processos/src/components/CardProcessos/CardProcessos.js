@@ -6,6 +6,7 @@ import EditIcon from '@material-ui/icons/Edit'
 import ModalProcesso from '../../pages/ModalProcesso'
 
 import { useStyles } from './CardProcessos.styles'
+import { remove } from '../../utils/services/ProcessoService'
 
 export const CardProcessos = ({ processo, onAtualizarProcessos }) => {
   const classes = useStyles()
@@ -16,6 +17,15 @@ export const CardProcessos = ({ processo, onAtualizarProcessos }) => {
     if (atualizarListagem) onAtualizarProcessos()
     setIsModalVisible(false)
   }
+
+  const excluirProcesso = async () => {
+    try{
+      await remove(processo.id);
+      onAtualizarProcessos()
+    } catch (error) {
+      console.log(error)
+    }
+  };
 
   return (
     <Card className={classes.root} elevation={2}>
@@ -75,7 +85,7 @@ export const CardProcessos = ({ processo, onAtualizarProcessos }) => {
           >
             <EditIcon />
           </IconButton>
-          <IconButton className={classes.button} variant="contained">
+          <IconButton onClick={excluirProcesso} className={classes.button} variant="contained">
             <DeleteIcon />
           </IconButton>
 
