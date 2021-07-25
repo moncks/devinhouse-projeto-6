@@ -87,7 +87,17 @@ const ModalProcesso = ({ open, onClose, processo }) => {
     }
 
     setErro(null)
-    onClose(true)
+    fecharModal(true)
+  }
+
+  const fecharModal = (atualizarListagem) => {
+    setOrgaoSetor('')
+    setAno('')
+    setDescricao('')
+    setAssunto('')
+    setInteressado('')
+
+    onClose(atualizarListagem)
   }
 
   useEffect(() => {
@@ -96,7 +106,7 @@ const ModalProcesso = ({ open, onClose, processo }) => {
   }, [])
 
   return (
-    <Modal open={open} onClose={onClose} className={classes.modal}>
+    <Modal open={open} onClose={fecharModal} className={classes.modal}>
       <Paper elevation={10} className={classes.paper}>
         <Typography variant="h4">
           {processo ? `Alterando processo: ${processo.nuProcesso}` : 'Criando processo'}
@@ -173,7 +183,7 @@ const ModalProcesso = ({ open, onClose, processo }) => {
               <Button variant="text" className={classes.btnSalvar} onClick={salvar}>
                 Salvar
               </Button>
-              <Button variant="text" onClick={onClose}>
+              <Button variant="text" onClick={fecharModal}>
                 Fechar
               </Button>
             </Box>
