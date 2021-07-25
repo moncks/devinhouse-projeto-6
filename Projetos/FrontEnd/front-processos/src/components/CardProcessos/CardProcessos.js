@@ -7,9 +7,23 @@ import ModalProcesso from '../../pages/ModalProcesso'
 
 import { useStyles } from './CardProcessos.styles'
 import { remove } from '../../utils/services/ProcessoService'
+import { toast } from 'react-toastify'
 
+toast.configure()
 export const CardProcessos = ({ processo, onAtualizarProcessos }) => {
   const classes = useStyles()
+
+  const showToastInfo = () => {
+    toast.info("Processo excluido com sucesso", {
+      position: "bottom-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
 
   const [isModalVisible, setIsModalVisible] = useState(false)
 
@@ -22,6 +36,7 @@ export const CardProcessos = ({ processo, onAtualizarProcessos }) => {
     try{
       await remove(processo.id);
       onAtualizarProcessos()
+      showToastInfo()
     } catch (error) {
       console.log(error)
     }

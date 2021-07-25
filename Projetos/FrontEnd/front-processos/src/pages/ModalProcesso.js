@@ -18,10 +18,11 @@ import { useStyles } from './ModalProcesso.styles'
 import * as AssuntoService from '../utils/services/AssuntoService'
 import * as InteressadoService from '../utils/services/InteressadoService'
 import * as ProcessoService from '../utils/services/ProcessoService'
+import { toast } from 'react-toastify'
 
+toast.configure()
 const ModalProcesso = ({ open, onClose, processo }) => {
   const classes = useStyles()
-
   const [erro, setErro] = useState(null)
 
   const [orgaoSetor, setOrgaoSetor] = useState(processo?.sgOrgaoSetor ?? '')
@@ -66,6 +67,18 @@ const ModalProcesso = ({ open, onClose, processo }) => {
     setInteressados(response?.data ?? [])
   }
 
+  const showToastSuccess = () => {
+    toast.success("Processo salvo com sucesso!", {
+      position: "bottom-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
   const salvar = async () => {
     const processoParaSalvar = {
       id: processo?.id,
@@ -75,7 +88,7 @@ const ModalProcesso = ({ open, onClose, processo }) => {
       cdAssuntoId: assunto,
       cdInteressadoId: interessado,
     }
-
+    
     const response = processoParaSalvar.id
       ? await ProcessoService.update(processoParaSalvar, processoParaSalvar.id)
       : await ProcessoService.create(processoParaSalvar)
@@ -86,6 +99,7 @@ const ModalProcesso = ({ open, onClose, processo }) => {
       return
     }
 
+    showToastSuccess()
     setErro(null)
     onClose(true)
   }

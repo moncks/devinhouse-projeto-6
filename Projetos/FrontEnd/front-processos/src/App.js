@@ -6,7 +6,10 @@ import { ReactKeycloakProvider } from '@react-keycloak/web'
 import keycloak from './keycloak'
 import { AppRouter } from './routes'
 import { useStyles } from './App.styles'
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
+toast.configure()
 const App = () => {
   const [darkMode, setDarkMode] = useState(false)
   const classes = useStyles()
@@ -22,6 +25,8 @@ const App = () => {
   const tokenLogger = (tokens) => {}
 
   return (
+    <>
+    <ToastContainer />
     <ReactKeycloakProvider authClient={keycloak} onEvent={eventLogger} onTokens={tokenLogger}>
       <ThemeProvider theme={theme}>
         <Navbar toggleTheme={toggleTheme} />
@@ -34,6 +39,7 @@ const App = () => {
         </Container>
       </ThemeProvider>
     </ReactKeycloakProvider>
+    </>
   )
 }
 
