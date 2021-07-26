@@ -19,11 +19,11 @@ import * as AssuntoService from "../utils/services/AssuntoService";
 import * as InteressadoService from "../utils/services/InteressadoService";
 import * as ProcessoService from "../utils/services/ProcessoService";
 import { toast } from "react-toastify";
-import {
-  processoInitialValues,
-  processoSchema,
-} from "./CadastroProcessoSchema";
-import { useFormik } from "formik";
+// import {
+//   processoInitialValues,
+//   processoSchema,
+// } from "./CadastroProcessoSchema";
+// import { useFormik } from "formik";
 
 toast.configure();
 const ModalProcesso = ({ open, onClose, processo }) => {
@@ -75,19 +75,10 @@ const ModalProcesso = ({ open, onClose, processo }) => {
     setInteressados(response?.data ?? []);
   };
 
-  const formik = useFormik({
-    initialValues: processoInitialValues,
-    // initialValues: {
-    //   orgaoSetor: orgaoSetor, 
-    //   ano: ano,
-    //   descricao: descricao,
-    //   assunto: assunto,
-    //   interessado: interessado,
-
-    // },
-    validationSchema: processoSchema,
-    
-  });
+  // const formik = useFormik({
+  //   initialValues: processoInitialValues,
+  //   validationSchema: processoSchema,
+  // });
 
   const showToastSuccess = () => {
     toast.success("Processo salvo com sucesso!", {
@@ -105,11 +96,11 @@ const ModalProcesso = ({ open, onClose, processo }) => {
     const processoParaSalvar = 
     {
       id: processo?.id,
-      nuAno: formik.values.ano,
-      sgOrgaoSetor: formik.values.orgaoSetor,
-      descricao: formik.values.descricao,
-      cdAssuntoId: formik.values.assunto,
-      cdInteressadoId: formik.values.interessado,
+      nuAno: ano,
+      sgOrgaoSetor: orgaoSetor,
+      descricao: descricao,
+      cdAssuntoId: assunto,
+      cdInteressadoId: interessado,
     };
 
     const response = processoParaSalvar.id
@@ -128,12 +119,11 @@ const ModalProcesso = ({ open, onClose, processo }) => {
   };
 
   const fecharModal = (atualizarListagem) => {
-    formik.values.ano = ''
-    
-      formik.values.orgaoSetor = ''
-      formik.values.descricao = ''
-      formik.values.assunto = ''
-      formik.values.interessado = ''
+      setAno('')
+      setOrgaoSetor('')
+      setDescricao('')
+      setAssunto('')
+      setInteressado('')
 
     onClose(atualizarListagem);
   };
@@ -165,16 +155,14 @@ const ModalProcesso = ({ open, onClose, processo }) => {
               : null}
           </Alert>
         ) : null}
-        <form onSubmit={formik.handleSubmit}>
           <Grid container spacing={3}>
             <Grid item xs={6}>
               <TextField
                 label="Orgão Setor" 
                 name="orgaoSetor"
                 variant="outlined"
-                value={formik.values.orgaoSetor}
-                onChange={formik.handleChange}
-                error={formik.touched.orgaoSetor && Boolean(formik.errors.orgaoSetor)}
+                value={orgaoSetor}
+                onChange={handleChangeOrgaoSetor}
               />
             </Grid>
 
@@ -183,9 +171,9 @@ const ModalProcesso = ({ open, onClose, processo }) => {
                 label="Ano"
                 name="ano"
                 variant="outlined"
-                value={formik.values.ano}
-                onChange={formik.handleChange}
-                error={formik.touched.ano && Boolean(formik.errors.ano)}
+                value={ano}
+                onChange={handleChangeAno}
+                
               />
             </Grid>
 
@@ -195,9 +183,8 @@ const ModalProcesso = ({ open, onClose, processo }) => {
                 name="descricao"
                 label="Descrição"
                 variant="outlined"
-                value={formik.values.descricao}
-                onChange={formik.handleChange}
-                error={formik.touched.descricao && Boolean(formik.errors.descricao)}
+                value={descricao}
+                onChange={handleChangeDescricao}
               />
             </Grid>
 
@@ -211,10 +198,9 @@ const ModalProcesso = ({ open, onClose, processo }) => {
                 <Select
                   fullWidth
                   name="assunto"
-                  value={formik.values.assunto}
-                  onChange={formik.handleChange}
+                  value={assunto}
+                  onChange={handleChangeAssunto}
                   label="Assunto"
-                  error={formik.touched.assunto && Boolean(formik.errors.assunto)}
                 >
                   <MenuItem value="">
                     <em>(nenhum)</em>
@@ -238,10 +224,9 @@ const ModalProcesso = ({ open, onClose, processo }) => {
                 <Select
                   fullWidth
                   name="interessado"
-                  value={formik.values.interessado}
-                  onChange={formik.handleChange}
+                  value={interessado}
+                  onChange={handleChangeInteressado}
                   label="Interessado"
-                  error={formik.touched.interessado && Boolean(formik.errors.interessado)}
                 >
                   <MenuItem value="">
                     <em>(nenhum)</em>
@@ -255,7 +240,6 @@ const ModalProcesso = ({ open, onClose, processo }) => {
               </FormControl>
             </Grid>
           </Grid>
-        </form>
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Box display="flex" justifyContent="flex-end">
