@@ -2,6 +2,8 @@
 
 Repositório para realização do projeto 6 do DEVinHouse
 
+Para acessar o site, utilize as seguintes credenciais >>> usuario = grupo05-user, senha = projeto06
+
 ### Descrição
 
 Você está participando de um processo seletivo para ingressar numa vaga de programador em uma grande empresa de TI. Uma das etapas consiste na implementação de autenticação e Logging em uma API RESTFULL, além do desenvolvimento de um projeto Front-end para consumir os dados da API.
