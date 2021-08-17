@@ -11,7 +11,6 @@ export const Navbar = ({ toggleTheme }) => {
   const classes = useStyles()
 
   const auth = useKeycloak()
-  console.log('teste', auth)
   const user = auth?.keycloak.tokenParsed?.name
 
   const logout = useCallback(() => {
