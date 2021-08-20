@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,9 +26,12 @@ import br.com.devinhouse.grupo04.dto.InteressadoDTOOutput;
 import br.com.devinhouse.grupo04.entity.Interessado;
 import br.com.devinhouse.grupo04.mapper.InteressadoMapper;
 import br.com.devinhouse.grupo04.service.InteressadoService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping(value = "/v1" + "/interessados")
+@Api(value="API Rest Interessados")
 public class InteressadoController {
 
 	@Autowired
@@ -39,6 +43,7 @@ public class InteressadoController {
 	@PostMapping(produces = APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@ResponseStatus(code = HttpStatus.CREATED)
+	@ApiOperation(value="Cria um novo interessado")
 	public InteressadoDTOOutput create(@Valid @RequestBody InteressadoDTOInput interessadoDTO) {
 		Interessado interessado = service.create(interessadoMapper.toInteressado(interessadoDTO));
 
@@ -48,6 +53,7 @@ public class InteressadoController {
 	@GetMapping(produces = APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@ResponseStatus(code = HttpStatus.OK)
+	@ApiOperation(value="Retorna todos os interessados salvos")
 	public List<InteressadoDTOOutput> findAll(@RequestParam(required = false) String nu_identificacao) {
 		List<Interessado> interessados = service.findAll(nu_identificacao);
 
@@ -57,6 +63,7 @@ public class InteressadoController {
 	@GetMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@ResponseStatus(code = HttpStatus.OK)
+	@ApiOperation(value="Retorna o interessado do id informado")
 	public InteressadoDTOOutput find(@PathVariable long id) {
 		Interessado interessado = service.find(id);
 
@@ -66,6 +73,7 @@ public class InteressadoController {
 	@PutMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	@ApiOperation(value="Atualiza o interessado desejado")
 	public void update(@PathVariable Long id, @RequestBody InteressadoDTOInput interessadoDTO) {
 		service.update(id, interessadoMapper.toInteressado(interessadoDTO));
 	}
@@ -73,6 +81,7 @@ public class InteressadoController {
 	@DeleteMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	@ApiOperation(value="Deleta o interessado desejado")
 	public void delete(@PathVariable Long id) {
 		service.delete(id);
 	}

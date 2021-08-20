@@ -51,7 +51,7 @@ Considere em usar as descrições de assuntos presentes no arquivo  *carga-inici
 
 ## Modelo de Dados
 
-![](./projeto5.png)
+![](../arquivos/projeto5.png)
 
 
 
@@ -61,4 +61,5 @@ Considere em usar as descrições de assuntos presentes no arquivo  *carga-inici
 - Assim que o grupo concluir o seu desafio, encaminhe o link do repositorio no AVA;
 - Todos deverão participar da apresentação do projeto que tem tempo maximo de 15 minutos;
 - Realize a apresentação de acordo com os requisitos solicitados neste projeto;
+
 
