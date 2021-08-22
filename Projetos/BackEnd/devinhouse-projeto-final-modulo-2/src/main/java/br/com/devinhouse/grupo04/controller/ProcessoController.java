@@ -26,9 +26,12 @@ import br.com.devinhouse.grupo04.dto.ProcessoDTOInput;
 import br.com.devinhouse.grupo04.dto.ProcessoDTOOutput;
 import br.com.devinhouse.grupo04.mapper.ProcessoMapper;
 import br.com.devinhouse.grupo04.service.ProcessoService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping(value = "/v1" + "/processos")
+@Api(value="API Rest Processo")
 public class ProcessoController {
 
 	@Autowired
@@ -41,6 +44,7 @@ public class ProcessoController {
 	@GetMapping(produces = APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@ResponseStatus(code = HttpStatus.OK)
+	@ApiOperation(value="Retorna todos os processos salvos")
 	public List<ProcessoDTOOutput> findAll(@RequestParam(required = false) String chave_processo,
 			@RequestParam(required = false) Long cd_interessado_id,
 			@RequestParam(required = false) Long cd_assunto_id
@@ -52,6 +56,7 @@ public class ProcessoController {
 	@GetMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@ResponseStatus(code = HttpStatus.OK)
+	@ApiOperation(value="Retorna o processo do id informado")
 	public ProcessoDTOOutput find(@PathVariable Long id) {
 		return processoMapper.toDto(service.find(id));
 	}
@@ -59,6 +64,7 @@ public class ProcessoController {
 	@PostMapping(produces = APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@ResponseStatus(code = HttpStatus.CREATED)
+	@ApiOperation(value="Cria um processo assunto")
 	public ProcessoDTOOutput create(@Valid @RequestBody ProcessoDTOInput processoDTO) {
 		return processoMapper.toDto(service.create(processoMapper.toProcesso(processoDTO)));
 	}
@@ -66,6 +72,7 @@ public class ProcessoController {
 	@PutMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	@ApiOperation(value="Atualiza o processo desejado")
 	public void update(@PathVariable Long id, @RequestBody ProcessoDTOInput processoDTO) {
 		service.update(id, processoMapper.toProcesso(processoDTO));
 	}
@@ -73,6 +80,7 @@ public class ProcessoController {
 	@DeleteMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	@ApiOperation(value="Deleta o processo desejado")
 	public void delete(@PathVariable Long id) {
 		service.delete(id);
 	}

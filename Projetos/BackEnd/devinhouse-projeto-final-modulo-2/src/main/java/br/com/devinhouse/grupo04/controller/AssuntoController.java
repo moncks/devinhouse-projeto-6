@@ -25,10 +25,13 @@ import br.com.devinhouse.grupo04.dto.AssuntoDTOOutput;
 import br.com.devinhouse.grupo04.entity.Assunto;
 import br.com.devinhouse.grupo04.mapper.AssuntoMapper;
 import br.com.devinhouse.grupo04.service.AssuntoService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping(value = "v1" + "/assuntos")
+@Api(value="API Rest Assuntos")
 public class AssuntoController {
 	
 	@Autowired
@@ -40,6 +43,7 @@ public class AssuntoController {
 	@GetMapping(produces = APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@ResponseStatus(code = HttpStatus.OK)
+	@ApiOperation(value="Retorna todos os assuntos salvos")
 	public List<AssuntoDTOOutput> findAll() {
 		List<Assunto> assuntos = service.findAll();
 		
@@ -49,6 +53,7 @@ public class AssuntoController {
 	@GetMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@ResponseStatus(code = HttpStatus.OK)
+	@ApiOperation(value="Retorna o assunto do id informado")
 	public AssuntoDTOOutput find(@PathVariable Long id) {
 		return assuntoMapper.toDto(service.find(id));
 	}
@@ -56,6 +61,7 @@ public class AssuntoController {
 	@PostMapping(produces = APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@ResponseStatus(code = HttpStatus.CREATED)
+	@ApiOperation(value="Cria um novo assunto")
 	public AssuntoDTOOutput create(@Valid @RequestBody AssuntoDTOInput assuntoDTO) {
 		Assunto assunto = service.create(assuntoMapper.toAssunto(assuntoDTO));
 		
@@ -65,6 +71,7 @@ public class AssuntoController {
 	@PutMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	@ApiOperation(value="Atualiza o assunto desejado")
 	public void update(@PathVariable Long id, @RequestBody AssuntoDTOInput assuntoDTO) {
 		service.update(id, assuntoMapper.toAssunto(assuntoDTO));
 	}
@@ -72,6 +79,7 @@ public class AssuntoController {
 	@DeleteMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	@ApiOperation(value="Deleta o assunto desejado")
 	public void delete(@PathVariable Long id) {
 		service.delete(id);
 	}
