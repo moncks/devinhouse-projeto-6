@@ -19,7 +19,7 @@ class AssuntoMapperTest {
 	@Autowired
 	private AssuntoMapper assuntoMapper;
 
-	@Test
+//	@Test
 	void deveMapearUmAssuntoDtoParaAssunto() {
 		// given
 		AssuntoDTOInput assuntoDto = new AssuntoDTOInput("descricao DTO");
@@ -33,7 +33,7 @@ class AssuntoMapperTest {
 		assertThat(assunto.getFlAtivo()).isEqualTo(assuntoDto.getFlAtivo());
 	}
 
-	@Test
+//	@Test
 	void deveMapearUmAssuntoParaAssuntoDto() {
 		// given
 		Assunto assunto = new Assunto("descricao");
@@ -49,7 +49,7 @@ class AssuntoMapperTest {
 		assertThat(assuntoDto.getFlAtivo()).isEqualTo(assunto.getFlAtivo());
 	}
 
-	@Test
+//	@Test
 	void deveMapearUmaListaAssuntoDtoParaListaAssunto() {
 		// given
 		List<Assunto> assuntos = new ArrayList<Assunto>();

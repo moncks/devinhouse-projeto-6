@@ -20,7 +20,7 @@ class InteressadoMapperTest {
 	@Autowired
 	private InteressadoMapper interessadoMapper;
 
-	@Test
+//	@Test
 	void deveMapearUmInteressadoDtoParaInteressado() {
 		// given
 		InteressadoDTOInput interessadoDto = new InteressadoDTOInput("Mauricio", "12834714002", "03/08/1988");
@@ -36,7 +36,7 @@ class InteressadoMapperTest {
 		assertThat(interessado.getFlAtivo()).isEqualTo(interessadoDto.getFlAtivo());
 	}
 
-	@Test
+//	@Test
 	void deveMapearUmInteressadoParaInteressadoDto() {
 		// given
 		Interessado interessado = new Interessado("Mauricio", "12834714002", LocalDate.of(1988, 8, 3));
@@ -52,7 +52,7 @@ class InteressadoMapperTest {
 		assertThat(interessadoDto.getFlAtivo()).isEqualTo(interessado.getFlAtivo());
 	}
 
-	@Test
+//	@Test
 	void deveMapearUmaListaInteressadoDtoParaListaInteressado() {
 		// given
 		List<Interessado> interessados = new ArrayList<Interessado>();
