@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Documentação do FrontEnd
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### **Funcionalidades**
 
-In the project directory, you can run:
+- [Front-end] Deverá ser criado formulário de login com validação de campos e que deve ser exibida caso o usuário não esteja autenticado
+- [Front-end] Deverá ser criado componente de layout com AppBar contendo menu e exibir as informações de usuários com ação de sair (deslogar)
+- [Front-end] Deverá ser adicionado opção para o usuário escolher entre dark e light theme, mantendo o tema selecionado mesmo que o usuário atualize a página
+- [Front-end] Deverá ser criado página para listar os processos obtidos pelo endpoint de listagem da API
+  - Deverá ser exibido em formato de card
+  - Deverá apresentar Skeleton enquanto está sendo feito o fetch na API
+  - Deverá ter opção de editar o processo
+  - Deverá ter opção de excluir o processo
+  - Deverá ter opção para adição de um novo processo
+- [Front-end] Deverá ser criado página para criação de um novo processo contendo formulário com validação de campos, ela deve ser aberta pela ação de adicionar da página de listagem
+- [Front-end] Deverá ser criado página para edição de um processo podendo ser utilizado o mesmo formulário usada na criação de processos, ela deve ser aberta pela ação do card
+- [Front-end] Deverá ser adicionado ação na opção de excluir processo pelo card
+- [Front-end] Deverá ser adicionado filtro de busca número do processo ou assunto (deve ter as duas possibilidades, porém o usuário escolhe uma ou outra)
+- [Front-end] Deverá ser adicionado testes unitários com no mínimo de 50% de cobertura de código
+- [Front-end] Deverá ser crido projeto de e2e com cypress e possuir a implementação de pelo menos um teste de ponta a ponta
 
-### `yarn start`
+<br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### **Requisitos**
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- O projeto de front deve ser criado projeto utilizando React com CRA template
+- Utilizar Material-UI para estilização dos componentes
+- Utilizar Formik para criação dos formulários
+- Utilizar Yup para validação dos formulários
+- Utilizar React Testing Library para realizar os testes unitários do Front-end
+- Utilizar Cypress para o desenvolvimento dos testes de e2e
+- Utilizar React Router DOM para navegação entre as páginas
+- Se for necessário algum gerenciamento de estado global utilize a Contex API
 
-### `yarn test`
+<br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+## Comando para rodar o projeto
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Executar o projeto
+```
+yarn start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Abrir a url [http://localhost:3000](http://localhost:3000) 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Rodar os testes da aplicação
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```
+yarn test
+```
 
 ### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+yarn build
+```
