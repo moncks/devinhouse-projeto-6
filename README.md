@@ -53,8 +53,20 @@ Step 3: Acessar a url
 
 ### **Docker FrontEnd**
 
-Através do comando abaixo, o FrontEnd da aplicação é iniciado
+Step 1: Acessar o diretorio de frontend
 
 ```
-  comando .... para executar o docker
+  *\devinhouse-projeto-7\Projetos\FrontEnd\front-processos
+```
+
+Step 2: Subir a aplicação
+
+```
+ docker-compose up
+```
+
+Step 3: Acessar a url
+
+```
+  http://localhost:3000
 ```
