@@ -3,12 +3,13 @@ version: '3.8'
 services:
   app:
     container_name: dockerized-react-app
-    image: node:12
-    ports:
-      - '3000:3000'
+    build:
+        context: .
+        dockerfile: Dockerfile
     volumes:
-      - ./:/srv/react-docker
-    working_dir: /srv/react-docker
-    command: 'npm start'
+        - '.:/app'
+        - '/app/node_modules'
+    ports:
+        - '3000:3000'
     environment:
-      - NODE_ENV=development
+        - NODE_ENV=development

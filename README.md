@@ -62,5 +62,5 @@ Step 2: Subir a aplicação
 Step 3: Acessar a url
 
 ```
-  hhtp://localhost:3000
+  http://localhost:3000
 ```
