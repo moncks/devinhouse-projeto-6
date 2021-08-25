@@ -19,6 +19,8 @@ Você está participando de um processo seletivo para ingressar numa vaga de pro
 - 11 - Deverá haver um endpoint para buscar um interessado baseado no documento de indentificação (NUIDENTIFICACAO);
 - 12 -  Deverá haver um endpoint para cadastro de um assunto;
 - 13 - Deverá haver um endpoint para buscar um assunto baseado na sua identificação única (ID);
+- 14 - Deverá ser implementado autenticação na API utilizando o keycloak, pode ser usado o servidor disponível em: https://training.dev.delivery/auth
+- 15 - Deverá ser implementado Logging com pelo menos 2 níveis de Log
 
 ## Regras de Negócio
 
@@ -44,6 +46,8 @@ Você está participando de um processo seletivo para ingressar numa vaga de pro
 - Uso de testes unitários com no minímo de 80% de cobertura de código;
 - Uso de mapeamento de ojeto relacional usando a especificação JPA;
 - Uso do banco de dados PostgresSQL/H2;
+- Utilizar Keycloak para implementação da autenticação
+
 
 ## Considerações
 
