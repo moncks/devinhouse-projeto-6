@@ -31,7 +31,19 @@ O Swagger pode ser acesso através da URL `http://localhost:8282/swagger-ui/#/`
 
 ### **Docker BackEnd**
 
-Através do comando abaixo, o BackEnd da aplicação é iniciado
+Step 1: Acessar a pasta 
+
+```
+  *\devinhouse-projeto-7\Projetos\BackEnd\devinhouse-projeto-final-modulo-2
+```
+
+Step 2: Rodar o comando abaixo para gerar a build do docker
+
+```
+  docker build -t devinhouse-projeto07-brayan .
+```
+
+Step 3: Através do comando abaixo, o BackEnd da aplicação é iniciado
 
 ```
   docker run -p 8282:8282 devinhouse-projeto07-brayan
